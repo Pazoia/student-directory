@@ -17,8 +17,15 @@ def print_header
 end
 
 def print(students)
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  puts "Please type the names you want to display, first letter: "
+  puts "Type 'all' to print the full list."
+  initial = gets.chomp
+  students.each_with_index do |student, indx|
+    if initial == "all"
+      puts "#{indx += 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    elsif student[:name].chars.first == initial
+      puts "#{indx += 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    end
   end
 end
 
